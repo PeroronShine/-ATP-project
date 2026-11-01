@@ -1,0 +1,20 @@
+# Проект no-code платформы: ИИ-ядро генерации структуры сайта
+[project]
+name = "no-code-ai-platform"
+version = "0.1.0"
+description = "Модуль ai_generator: генерация JSON-структуры сайта через GigaChat (structured output)"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.7",          # схемы и валидация structured output
+    "python-dotenv>=1.0",     # загрузка переменных окружения из .env
+    "requests>=2.31",         # HTTP-клиент для REST-режима работы с API
+    "gigachat>=0.2",          # официальная SDK Сбера (поддержка json_schema)
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# Плоский проект: модули лежат в корне репозитория
+include = ["ai_generator.py"]
